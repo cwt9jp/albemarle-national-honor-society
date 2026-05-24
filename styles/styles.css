@@ -1,0 +1,105 @@
+body {
+    margin: 0;
+}
+
+/* Header */
+header {
+    width: 100%;
+    padding-left: 40px;
+    position: fixed;
+    z-index: 1;
+    border-bottom: 1px solid white;
+
+    display: flex;
+}
+
+.logo {
+    display: inline-block;
+    padding: 15px 15px;
+    border-left: 1px solid white;
+
+    & img {
+        height: 50px;
+    }
+}
+
+#nhs-logo {
+    border-right: 1px solid white;
+}
+
+/* Banner */
+#title-banner {
+    width: 100%;
+    height: 140vh;
+}
+
+main:active {
+    & .main-banner-image {
+        width: 80%;
+        height: 0vh;
+    }
+
+    & .second-banner-image {
+        width: 100%;
+        height: 140vh;
+    }
+}
+
+.main-banner-image {
+    width: 100%;
+    height: 140vh;
+    display: block;
+    margin: auto;
+
+    object-fit: cover;
+    object-position: center;
+    
+    filter: brightness(0.8);
+
+    transition: cubic-bezier(0.76, 0, 0.24, 1) all 1.5s;
+}
+
+.second-banner-image {
+    width: 80%;
+    height: 0vh;
+    display: block;
+    margin: auto;
+
+    object-fit: cover;
+    object-position: center;
+    
+    filter: brightness(0.8);
+
+    transition: cubic-bezier(0.76, 0, 0.24, 1) all 1.5s;
+}
+
+#title {
+    position: fixed;
+    z-index: 1;
+    top: 30%;
+    left: 10%;
+
+    color: white;
+
+    & * {
+        text-transform: uppercase;
+        margin: 0;
+    }
+
+    & h1 {
+        word-spacing: 100vw;
+        line-height: 85px;
+        font-family: "Cesso", serif;
+        font-feature-settings: "ss02";
+        font-size: 60pt;
+        font-weight: 100;
+    }
+
+    & h2 {
+        display: inline-block;
+        font-family: "bebas-neue", sans-serif;
+        font-weight: 200;
+        letter-spacing: 2px;
+        border-bottom: 1px solid white;
+    }
+}

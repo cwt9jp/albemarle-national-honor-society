@@ -7,59 +7,41 @@ header {
     width: 100%;
     padding-left: 40px;
     position: fixed;
-    z-index: 1;
+    z-index: 100;
+
     border-bottom: 1px solid white;
+    backdrop-filter: blur(0);
 
     display: flex;
-}
 
-.logo {
-    display: inline-block;
-    padding: 15px 15px;
-    border-left: 1px solid white;
+    transition: cubic-bezier(0.25, 1, 0.5, 1) backdrop-filter 1s;
 
-    & img {
-        height: 50px;
+    & .logo {
+        display: inline-block;
+        padding: 15px 15px;
+        border-left: 1px solid white;
+
+        & img {
+            height: 50px;
+        }
+    }
+
+    & #nhs-logo {
+        border-right: 1px solid white;
     }
 }
 
-#nhs-logo {
-    border-right: 1px solid white;
+header.opaque {
+    /* backdrop-filter: blur(5px); */
 }
 
 /* Banner */
 #title-banner {
     width: 100%;
-    height: 140vh;
+    flex: 1;
 }
 
-main:active {
-    & .main-banner-image {
-        width: 80%;
-        height: 0vh;
-    }
-
-    & .second-banner-image {
-        width: 100%;
-        height: 140vh;
-    }
-}
-
-.main-banner-image {
-    width: 100%;
-    height: 140vh;
-    display: block;
-    margin: auto;
-
-    object-fit: cover;
-    object-position: center;
-    
-    filter: brightness(0.8);
-
-    transition: cubic-bezier(0.76, 0, 0.24, 1) all 1.5s;
-}
-
-.second-banner-image {
+.hero-image {
     width: 80%;
     height: 0vh;
     display: block;
@@ -67,23 +49,49 @@ main:active {
 
     object-fit: cover;
     object-position: center;
+
+    position: sticky;
+    top: -40vh;
     
     filter: brightness(0.8);
 
-    transition: cubic-bezier(0.76, 0, 0.24, 1) all 1.5s;
+    transition:
+        cubic-bezier(0.76, 0, 0.24, 1) width 3s,
+        cubic-bezier(0.76, 0, 0.24, 1) height 3s;
 }
 
-#title {
+.hero-image.showing {
+    width: 100%;
+    height: 140vh;
+}
+
+#main-title {
     position: fixed;
-    z-index: 1;
+    z-index: 100;
     top: 30%;
     left: 10%;
 
     color: white;
 
+    & h2 {
+        border-bottom: 1px solid white;
+    }
+}
+
+.title {
+
     & * {
         text-transform: uppercase;
         margin: 0;
+
+        opacity: 1;
+        filter: blur(0px);
+        transform: translateY(0);
+
+        transition:
+            cubic-bezier(0.25, 1, 0.5, 1) opacity 1s,
+            cubic-bezier(0.25, 1, 0.5, 1) filter 1s,
+            cubic-bezier(0.25, 1, 0.5, 1) transform 1s;
     }
 
     & h1 {
@@ -93,6 +101,8 @@ main:active {
         font-feature-settings: "ss02";
         font-size: 60pt;
         font-weight: 100;
+
+        transition-delay: 0.2s;
     }
 
     & h2 {
@@ -100,6 +110,32 @@ main:active {
         font-family: "bebas-neue", sans-serif;
         font-weight: 200;
         letter-spacing: 2px;
-        border-bottom: 1px solid white;
     }
+}
+
+.title.vanish * {
+    opacity: 0;
+    filter: blur(15px);
+    transform: translateY(-20px);
+}
+    
+
+/* First section */
+#first-section {
+    display: flex;
+}
+
+#first-section-content {
+    padding-top: 200vh;
+    flex: 0;
+    overflow: hidden;
+    background-color: blanchedalmond;
+
+    & > * {
+        margin-inline: 80px;
+    }
+}
+
+#second-title {
+    margin-bottom: 30px;
 }

@@ -38,18 +38,23 @@ return x < 0.5 ? 8 * x * x * x * x : 1 - Math.pow(-2 * x + 2, 4) / 2;
 document.addEventListener("scroll", () => {
     const stickyStart = imageHeight - window.innerHeight;
     const stickyEnd = stickyStart + 9 * window.outerHeight / 10;
+    const startShowingContent = (stickyEnd - stickyStart) * 0.5 + stickyStart;
 
     if (window.scrollY >= stickyStart && window.scrollY <= stickyEnd) {
         mainTitle.classList.add("vanish");
-        secondTitle.classList.add("vanish");
         header.classList.add("opaque");
+
+        if (window.scrollY <= startShowingContent) {
+            firstSectionContent.classList.add("vanish");
+        } else {
+            firstSectionContent.classList.remove("vanish");
+        }
 
         const scrollPercentage = (scrollY - stickyStart) / (stickyEnd - stickyStart);
         firstSectionContent.style.flex = 2 * easeInOutQuart(scrollPercentage);
         
     } else if (window.scrollY >= stickyEnd) {
         firstSectionContent.style.flex = 2;
-        secondTitle.classList.remove("vanish");
     } else {
         firstSectionContent.style.flex = 0;
         mainTitle.classList.remove('vanish');
